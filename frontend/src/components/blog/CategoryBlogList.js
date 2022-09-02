@@ -1,11 +1,9 @@
 import LoadingCard from "components/loaders/LoadingCard"
-import SmallSetPagination from "components/paginacion/SmallSetPagination"
 import CategoriesSmallSetPagination from "components/pagination/CategoriesSmallSetPagination"
-import { useEffect } from "react"
 import { connect } from "react-redux"
 import BlogCard from "./BlogCard"
 
-function BlogList({
+function CategoryBlogList({
     blog_list,
     get_blog_list_page,
     count,
@@ -52,4 +50,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps,{
-})(BlogList)
+})(CategoryBlogList)

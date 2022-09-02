@@ -1,4 +1,4 @@
-import BlogList from "components/blog/BlogList"
+import CategoryBlogList from "components/blog/CategoryBlogList"
 import FullWidthLayout from "hocs/layouts/FullWidthLayout"
 import { useEffect } from "react"
 import { connect } from "react-redux"
@@ -22,7 +22,7 @@ function BlogCategory({
 
     return(
         <FullWidthLayout>
-            <BlogList blog_list={blog_list && blog_list} count={count && count} get_blog_list_page={get_blog_list_page_category}/>
+            <CategoryBlogList blog_list={blog_list && blog_list} get_blog_list_page={get_blog_list_page_category} category_id={category_id}/>
         </FullWidthLayout>
     )
 }

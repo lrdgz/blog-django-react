@@ -6,6 +6,8 @@ import {
     GET_BLOG_LIST_CATEGORIES_FAIL,
     GET_BLOG_SUCCESS,
     GET_BLOG_FAIL,
+    GET_BLOG_PAGINATION_SEARCH_SUCCESS,
+    GET_BLOG_PAGINATION_SEARCH_FAIL
 } from "./types";
 
 const config = {
@@ -105,6 +107,29 @@ export const get_blog = (slug) => async dispatch => {
             })
         }
     } catch (error) {
-        
+        dispatch({
+            type: GET_BLOG_FAIL
+        })
+    }
+}
+
+export const search_blog = (search_term) => async dispatch => {
+    try {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/search/${search_term}`, config);
+
+        if(res.status === 200) {
+            dispatch({
+                type: GET_BLOG_PAGINATION_SEARCH_SUCCESS,
+                payload: res.data
+            })
+        } else {
+            dispatch({
+                type: GET_BLOG_PAGINATION_SEARCH_FAIL
+            })
+        }
+    } catch (error) {
+        dispatch({
+            type: GET_BLOG_PAGINATION_SEARCH_FAIL
+        })
     }
 }
